@@ -1,0 +1,11 @@
+p{
+    /* background-color: white; */
+    color: purple;
+}
+body{
+    background-image: href("../images/nuclear.jpg");
+    background-color: burlywood;
+}
+h1{
+color:pink;
+}
