@@ -1,21 +1,21 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html>
 <header>
     <link rel="stylesheet" href="assets/css/style.css">
 </header>
 <body>
-   
-    <h3>But first play the...</h3>
-    <h1 id="title">THE TRIVIA GAME</h1>
+   <!-- HTML-----------______----------__________------_______--------_______------ -->
+    <h3></h3>
+    <h1 id="title">LIGHTNING-ROUND TRIVIA GAME!</h1>
 
     
     <h2 id="reset">RESET</h2>
-    <div id="wrapper">
+    <div id="wrapper" onload = "resetQuestions()">
 
             <div id="display"></div>
       
     </div>        
-
+    <div id="questions">
     <P>1. The second president of the United States was:</P>
     <BR>
         <input class="wrong1" type="radio" name="question-one" value="maison">Lincoln<BR>
@@ -25,39 +25,39 @@
         
         
     <P>2. The best flavor of ice cream is?</p><BR>
-        <input id="mint-chip" type="radio" name="question-two" value="maison">Mint Chip<BR>
-        <input class="wrong2" type="radio" name="question-two" value="valise">French vanilla bean<BR>
-        <input class="wrong2" type="radio" name="question-two" value="soleil">Fuck<BR>
-        <input class="wrong2" type="radio" name="question-two" value="poisson">Gumball<BR>
+        <input id="mint-chip" type="radio" name="question-two">Mint Chip<BR>
+        <input class="wrong2" type="radio" name="question-two">French vanilla bean<BR>
+        <input class="wrong2" type="radio" name="question-two">Fuck<BR>
+        <input class="wrong2" type="radio" name="question-two">Gumball<BR>
         
         
     <P>3. In I am legend, Will Smith traveled with what species of faithful companion?</P><BR>
-        <input class="wrong2" type="radio" name="question-three" value="renard">Homosapien<BR>
-        <input id="dog" type="radio" name="question-three" value="valise">Canine Familiaris<BR>
-        <input class="wrong2" type="radio" name="question-three" value="soleil">Feline Familiaris<BR>
-        <input class="wrong2" type="radio" name="question-three" value="poisson">Tyranasaurus Rex<BR>
+        <input class="wrong3" type="radio" name="question-three">Homosapien<BR>
+        <input id="dog" type="radio" name="question-three">Canine Familiaris<BR>
+        <input class="wrong3" type="radio" name="question-three">Feline Familiaris<BR>
+        <input class="wrong3" type="radio" name="question-three">Tyranasaurus Rex<BR>
         </p>
 
 <P>4. General Ulysses S. Grant, during American Civil War, sent a telegram. Addressed to the War Department, it read: I will not move my army without blank. Fill in the blank.</P><BR>
-        <input class="wrong2" type="radio" name="question-four" value="renard">Whiskey<BR>
-         <input class="wrong2" type="radio" name="question-four" value="valise">Ammo<BR>
-         <input class="wrong2" type="radio" name="question-four" value="soleil">Music<BR>
-         <input class="wrong2" type="radio" name="question-four" value="poisson">Tyranasaurus Rex<BR>
-         <input id="onions" type="radio" name="question-four" value="poisson">Onions<BR>
+        <input class="wrong4" type="radio" name="question-four" >Whiskey<BR>
+         <input class="wrong4" type="radio" name="question-four" >Ammo<BR>
+         <input class="wrong4" type="radio" name="question-four" >Music<BR>
+         <input class="wrong4" type="radio" name="question-four" >Tyranasaurus Rex<BR>
+         <input id="onions" type="radio" name="question-four" >Onions<BR>
         
         <input id="submit-button" type="submit" value="Sumbit Answers">
 <input id="clear-button" type="reset" value="Clear Answers">
         
+</div>
         
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 
 
 
-
+<!-- ----________-------JAVASCRIPT--_____---____--------___-----> 
 <script type="text/javascript">
 
-// -------------Quiz Form Input Button Detectors---------->
 var answer1 = false;
 var answer2 = false;
 var answer3 = false;
@@ -65,13 +65,146 @@ var answer4 = false;
 
 var score = 0;
 
+// ------________-------Quiz Form Input Button Detectors-------_______------___________---->
+
+
+
+
 $("#submit-button").on("click", function(){
     answerChecker();
     alert("Your score is "+score+" out of 4");
     score=0;
 });
 
-$("#clear-button").on("click", function(){
+
+  $("#clear-button").on("click", function(){
+      answer1 = false;
+      answer2 = false;
+      answer3 = false;
+      answer4 = false;
+    $("input:radio[name='question-one']").each(function (i) {        
+        this.checked = false;
+    });
+    $("input:radio[name='question-two']").each(function (i) {        
+        this.checked = false;
+    });$("input:radio[name='question-three']").each(function (i) {        
+        this.checked = false;
+    });$("input:radio[name='question-four']").each(function (i) {        
+        this.checked = false;
+  });
+ });
+
+
+// wrong answers---------______-----------________-----------________-------->
+$(".wrong1").on("click", function(){
+    var answer1 = false;
+});
+$(".wrong2").on("click", function(){
+    var answer2 = false;
+}); 
+$(".wrong3").on("click", function(){
+    var answer3 = false;
+});
+$(".wrong4").on("click", function(){
+    var answer4 = false;
+});
+
+    
+
+
+
+// -----Right Answers---------------------------------------->
+ $("#adams").on("click", function() {
+
+    answer1 = true;
+    console.log(answer1);
+    answerChecker();
+    console.log(score);
+ });
+
+ $("#mint-chip").on("click", function(){
+
+    answer2 = true;
+    console.log(answer2);
+    answerChecker();
+    console.log(score);
+ });
+
+ $("#dog").on("click", function(){
+
+    answer3 = true;
+    console.log(answer3);
+    answerChecker();
+    console.log(score);
+});
+
+ $("#onions").on("click", function(){
+
+    answer4 = true;
+    console.log(answer4);
+    answerChecker();
+    console.log(score);
+});
+
+ //---------Wrong Answers------------------------->
+$(".wrong1").on("click", function(){
+
+    answer1 = false;
+    console.log(answer1);
+});
+ $(".wrong2").on("click", function(){
+
+    answer2 = false;
+    console.log(answer2);
+});
+$(".wrong3").on("click", function(){
+
+    answer3 = false;
+    console.log(answer3);
+});
+$(".wrong4").on("click", function(){
+
+    answer4 = false;
+    console.log(answer4);
+});
+
+//--------Answer Checker------------------------->
+
+function answerChecker(){
+    score = 0;
+    if(answer1 === true){
+        score++;
+  
+    };
+    if(answer2 === true){
+        score++;
+     
+    };
+    if(answer3 === true){
+        score++;
+        
+    };
+    if(answer4 === true){
+        score++;
+      
+    };
+    
+
+};
+
+
+
+//-------------Time Counter Script--------------------------->
+var time = 30;
+
+var intervalId;
+
+
+
+$("#display").text("00:30");
+
+
+window.onload = function() {
     $("input:radio[name='question-one']").each(function (i) {        
         this.checked = false;
     });
@@ -82,99 +215,24 @@ $("#clear-button").on("click", function(){
     });$("input:radio[name='question-four']").each(function (i) {        
         this.checked = false;
     });
-    var answer1 = false;
-    var answer2 = false;
-    var answer3 = false;
-    var answer4 = false;
-    score = 0;
-});
-
-
-// -----Right Answers---------->
- $("#adams").on("click", function(){
-
-    answer1 = true;
-    console.log(answer1);
- });
-
- $("#mint-chip").on("click", function(){
-
-    answer2 = true;
- });
-
- $("#dog").on("click", function(){
-
-    answer3 = true;
-});
-
- $("#onions").on("click", function(){
-
-    answer4 = true;
-});
-
- //---------Wrong Answers-------->
- $(".wrong2").on("click", function(){
-
-    answer2 = false;
-    console.log(answer1);
-});
-$(".wrong3").on("click", function(){
-
-    answer3 = false;
-    console.log(answer1);
-});
-$(".wrong4").on("click", function(){
-
-    answer4 = false;
-    console.log(answer1);
-});
-
-//--------Answer Checker---------->
-
-function answerChecker(){
-    if(answer1 == true){
-        score++;
-  
-    }
-    if(answer2 == true){
-        score++;
-     
-    }
-    if(answer3 == true){
-        score++;
-        
-    }
-    if(answer4 == true){
-        score++;
-      
-    }
-
+    
+    
 }
-
-
-
-//-------------Time Counter Script----------->
-var time = 10;
-
-var intervalId;
-
-
-
-$("#display").text("00:10");
-
+window.onload = resetQuestions();
 window.onload = function() {
+   
     console.log("onload");
-
     intervalId = setInterval(count, 1000);
 }
 
 
 function count() {
-    
+ 
+  
    time--;
   var converted = timeConverter(time);
    $("#display").text(converted);
- 
+  
 }
 
 
@@ -195,22 +253,49 @@ function timeConverter(t) {
    }
 
    return minutes + ":" + seconds;
-}
-
+};
+// <!-- ----------------------WINDOWtIMEOUt-------------------------------- -->
 var windowTimeout = setTimeout(function() {
     $("#display").text("00:00");
     clearInterval(intervalId);
 
     answerChecker();
+    console.log("GAMEOVER U GOT "+score);
     alert("TIMES UP! Your score is "+score+" out of 4");
-    score = 0;
-}, 10000);
+   
+}, 30000);
 
 
  $("#reset").on("click", function(){
 
-    var time = 10;
-    
+    resetTimer();
+    resetQuestions();
+    resetAlert();
+    // $("input:radio[name='question-one']").each(function (i) {        
+    //     this.checked = false;
+    // });
+    // $("input:radio[name='question-two']").each(function (i) {        
+    //     this.checked = false;
+    // });$("input:radio[name='question-three']").each(function (i) {        
+    //     this.checked = false;
+    // });$("input:radio[name='question-four']").each(function (i) {        
+    //     this.checked = false;
+    // });
+
+    // count = 0;
+
+});
+
+function resetTimer(){
+    time = 30;
+    clearInterval(intervalId);
+    $("#display").text("00:30");
+
+    intervalId = setInterval(count, 1000);
+    console.log("reset timer ran");
+};
+
+function resetQuestions(){
     $("input:radio[name='question-one']").each(function (i) {        
         this.checked = false;
     });
@@ -221,13 +306,18 @@ var windowTimeout = setTimeout(function() {
     });$("input:radio[name='question-four']").each(function (i) {        
         this.checked = false;
     });
-
-    // count = 0;
+};
+function resetAlert(){
+    var windowTimeout = setTimeout(function() {
+    $("#display").text("00:00");
     clearInterval(intervalId);
-    $("#display").text("00:10");
 
-    intervalId = setInterval(count, 1000);
-});
+    answerChecker();
+    console.log("GAMEOVER U GOT "+score);
+    alert("TIMES UP! Your score is "+score+" out of 4");
+   
+}, 30000);
+};
 
 
 </script>

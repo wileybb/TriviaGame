@@ -3,9 +3,32 @@ p{
     color: purple;
 }
 body{
-    background-image: href("../images/nuclear.jpg");
-    background-color: burlywood;
+    background-image: url("../images/nuclear.jpg");
+    /* background-color: burlywood; */
 }
 h1{
 color:pink;
+}
+h2{
+    background-color: yellow;
+    width: 50%;
+    padding: 50px;
+}
+#display{
+    background-color: black;
+    text-align: center;
+    font-weight: bolder;
+    color: lawngreen;
+    width: 50%;
+    padding: 20px;
+    font-size: 50px;
+
+}
+input{
+    background-color: white;
+    
+}
+#questions{
+    background-color: white;
+    width: 50%;
 }
